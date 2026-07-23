@@ -4,7 +4,7 @@ import { Search, MoreVertical, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 // Dummy data to simulate previous workflows from the database
 const dummyWorkflows = [
@@ -23,6 +23,7 @@ const dummyWorkflows = [
 ]
 
 export default function WorkflowsPage() {
+  const router = useRouter();
   return (
     <div className="flex-1 space-y-6 p-8 pt-6">
       <div className="flex items-center justify-between space-y-2">
@@ -33,7 +34,7 @@ export default function WorkflowsPage() {
           </p>
         </div>
         <div className="flex items-center space-x-2">
-          <Button className="bg-orange-600 hover:bg-orange-700 text-white">
+          <Button onClick={() => router.push('/workflows/new')} className="bg-orange-600 hover:bg-orange-700 text-white" >
             Create workflow
           </Button>
         </div>

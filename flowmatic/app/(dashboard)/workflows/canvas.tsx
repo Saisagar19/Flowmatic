@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback } from "react";
+import { useTheme } from "next-themes"
 import {
   ReactFlow,
   Background,
@@ -38,6 +39,8 @@ const initialEdges: Edge[] = [
 ];
 
 export function FlowCanvas() {
+  const { theme } = useTheme();
+
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
@@ -54,6 +57,7 @@ export function FlowCanvas() {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
+        colorMode={theme === "dark" ? "dark" : "light"}
       >
         <Background />
         <Controls />
